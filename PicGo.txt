@@ -1,0 +1,85 @@
+{
+
+ "picBed": {
+
+  "current": "github",
+
+  "uploader": "github",
+
+  "smms": {
+
+   "token": ""
+
+  },
+
+  "github": {
+
+   "repo": "apollo600/images",
+
+   "branch": "main",
+
+   "token": "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",
+
+   "path": "win11/",
+
+   "customUrl": ""
+
+  },
+
+  "proxy": ""
+
+ },
+
+ "settings": {
+
+  "shortKey": {
+
+   "picgo:upload": {
+
+​    "enable": false,
+
+​    "key": "CommandOrControl+Shift+P",
+
+​    "name": "upload",
+
+​    "label": "QUICK_UPLOAD"
+
+   }
+
+  },
+
+  "showUpdateTip": false,
+
+  "privacyEnsure": true,
+
+  "proxy": "",
+
+  "registry": "",
+
+  "autoRename": true,
+
+  "autoStart": true,
+
+  "uploadNotification": false,
+
+  "server": {
+
+   "port": 36677,
+
+   "host": "127.0.0.1",
+
+   "enable": true
+
+  }
+
+ },
+
+ "needReload": false,
+
+ "picgoPlugins": {},
+
+ "debug": true,
+
+ "PICGO_ENV": "GUI"
+
+}
