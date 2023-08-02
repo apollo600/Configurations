@@ -18,7 +18,7 @@
 
    "branch": "main",
 
-   "token": "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",
+   "token": "<token>",
 
    "path": "win11/",
 
