@@ -4,6 +4,18 @@
 
 **or** 从此 [链接](https://cvws.icloud-content.com.cn/B/AaI4k_bKypLbJMJz1yXSWcyRIM4RAYUprBsYyxCyOjIKrWT_62GaKSmB/Clash.for.Windows-0.20.30-x64-linux.tar.gz?o=ApzGfz4ziPelnN7ZjsvI0g8I7HBDbNm90It80MHhxSQh&v=1&x=3&a=CAogjDDfZPSiI_OHd-BwpHxNxNyybZuM2Mm5QnHMsMilsNsSbxD6yLOnmzEY-qWPqZsxIgEAUgSRIM4RWgSaKSmBaid3zk_S2Mfq1-oh0nliIyVsWTEkBl3M1p6rRnwgJqK16uC5OPewYZxyJ0-wXv6hiwkBnSmbKSauH6QvsjnY_w7uZTQYZzCaPWh4BZTMxU86Kg&e=1690961171&fl=&r=92ddebfa-61f9-486a-9df4-9242052c7598-1&k=U8puK7ePAg-A9wW5nw5NGw&ckc=com.apple.clouddocs&ckz=com.apple.CloudDocs&p=220&s=LvWQwHNzQhfmjxq47mAst8RbUpA) 下载一个旧版本
 
+#### Git
+
+look at [Git Configurations](Git.md)
+
+#### zsh
+
+```shell
+git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git
+git clone --depth=1 https://github.com/zsh-users/zsh-completions.git
+git clone --depth=1 https://github.com/zsh-users/zsh-autosuggesti
+```
+
 #### Edge浏览器
 
 除了浏览器的基本功能，用于同步书签
