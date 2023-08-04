@@ -1,3 +1,7 @@
+#### 系统安装
+
+https://zhuanlan.zhihu.com/p/138951848?utm_id=0
+
 #### Clash for Windows
 
 从此 [链接](https://cvws.icloud-content.com.cn/B/AaI4k_bKypLbJMJz1yXSWcyRIM4RAYUprBsYyxCyOjIKrWT_62GaKSmB/Clash.for.Windows-0.20.30-x64-linux.tar.gz?o=ApzGfz4ziPelnN7ZjsvI0g8I7HBDbNm90It80MHhxSQh&v=1&x=3&a=CAogjDDfZPSiI_OHd-BwpHxNxNyybZuM2Mm5QnHMsMilsNsSbxD6yLOnmzEY-qWPqZsxIgEAUgSRIM4RWgSaKSmBaid3zk_S2Mfq1-oh0nliIyVsWTEkBl3M1p6rRnwgJqK16uC5OPewYZxyJ0-wXv6hiwkBnSmbKSauH6QvsjnY_w7uZTQYZzCaPWh4BZTMxU86Kg&e=1690961171&fl=&r=92ddebfa-61f9-486a-9df4-9242052c7598-1&k=U8puK7ePAg-A9wW5nw5NGw&ckc=com.apple.clouddocs&ckz=com.apple.CloudDocs&p=220&s=LvWQwHNzQhfmjxq47mAst8RbUpA) 下载一个旧版本，然后再更新
@@ -84,10 +88,9 @@ yay -S linuxqq # 会有三个搜索结果，全名就是 linuxqq
 https://www.jianshu.com/p/59a494968725
 
 ```shell
-git clone https://github.com/helixarch/debtap
-cd debtap
-sudo cp debtap /usr/local/bin
-sudo debtap -u  # 安装相关的软件
+yay -S debtap
+sudo sed -i 's|http://ftp.debian.org/debian/dists|https://mirrors.ustc.edu.cn/debian/dists|g' /usr/bin/debtap # 换源
+sudo debtap -u  # 更新源
 ```
 
 使用说明：
@@ -98,4 +101,6 @@ sudo pacman -U xxx.pkg # 安装 .pkg
 ```
 
 **问题：执行 `sudo debtap -u` 一直卡在最后一步，下载 "virtual package list" 会卡住。**
+
+问题解决：https://www.jianshu.com/p/3eee333687a4，通过换源的方式，只是网上的换源教程比较少。
 
