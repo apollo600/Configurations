@@ -24,7 +24,7 @@ https://www.microsoft.com/en-us/edge/download?form=MA13FJ
 
 #### 输入法
 
-**TODO** 目前还没有遇到合适的输入法
+fcitx + gugoupinyin
 
 #### Typora
 

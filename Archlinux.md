@@ -39,6 +39,22 @@ echo -e "GTK_IM_MODULE=fcitx\nQT_IM_MODULE=fcitx\nXMODIFIERS=@im=fcitx" > ~/.pam
 sudo reboot
 ```
 
+#### 浏览器
+
+优先使用edge，其次是chrome。
+
+安装edge:
+
+```shell
+yay -S microsoft-edge-stable-bin # 该安装过程时间较长，大概一小时
+```
+
+安装chrome:
+
+```shell
+yay -S google-chrome
+```
+
 #### VS Code
 
 在Archlinux上有多个安装源，从AUR上下载官方的发行版发现无法进行设置同步。
