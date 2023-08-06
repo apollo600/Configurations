@@ -104,3 +104,9 @@ sudo pacman -U xxx.pkg # 安装 .pkg
 
 问题解决：https://www.jianshu.com/p/3eee333687a4，通过换源的方式，只是网上的换源教程比较少。
 
+#### 网易云音乐
+
+```shell
+yay -S netease-cloud-music
+```
+
