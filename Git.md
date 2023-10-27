@@ -27,6 +27,9 @@ vim ~/.ssh/config
 ProxyCommand /usr/bin/corkscrew 127.0.0.1 7890 %h %p
 ```
 
+#### 别名
 
-
+```shell
+git config --global alias.st status
+```
 

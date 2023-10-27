@@ -108,6 +108,16 @@ alias ll="ls -lahF --color --time-style=long-iso"
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
-# proxy
-export http_proxy="http://127.0.0.1:7890"
-export https_proxy="http://127.0.0.1:7890"
+# call this function to turn on proxy
+proxy() {
+        export http_proxy="http://127.0.0.1:7890"
+        export https_proxy="http://127.0.0.1:7890"
+        echo "Turn on HTTP&HTTPS Proxy [port 7890]"
+}
+
+# call this function to turn off proxy
+noproxy () {
+  unset http_proxy
+  unset https_proxy
+  echo "Turn off HTTP&HTTPS Proxy"
+}
