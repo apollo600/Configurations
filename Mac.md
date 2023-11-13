@@ -1,57 +1,91 @@
-### Homebrew
+## 安装列表
 
-安装看官网：[Homebrew — The Missing Package Manager for macOS (or Linux)](https://brew.sh/)
+1.   Clash for Windows, iCloud 下载人工备份
 
-这里主要解决一个换源的问题。当时从清华源粘贴了一个脚本：
+2.   iTerm2, 目前的配置并不算多,主要是字体、背景之类的
 
-```shell
-export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
-for tap in core cask{,-fonts,-versions} command-not-found services; do
-    brew tap --custom-remote --force-auto-update "homebrew/${tap}" "https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-${tap}.git"
-done
-brew update
-```
+     1.   维护一份配置文件 [iterm2.json](./iterm2.json)
+     2.   需要配置 Nerd Font [Nerd Fonts - Iconic font aggregator, glyphs/icons collection, & fonts patcher](https://www.nerdfonts.com/font-downloads), 目前使用的是 CodeNewRoman Nerd Font, 也可以使用 FiraCode Nerd Font
 
-这种东西，用起来方便，想找到他到底干了什么就难了。现在因为清华源放弃维护，导致 homebrew 安装不了东西，我也不知道问题到底出在哪，搞了半天。
+     <img src="https://raw.githubusercontent.com/apollo600/images/main/mac-mini/202311140105129.png?token=AQJ63I37BM32TI2AFSHPSRTFKJLZ6" alt="image-20231114010536990" style="zoom: 33%;" />
 
-接下来首先清空 tap：
+3.   Homebrew, mac 上很好用的安装器 [官网](brew.sh)
 
-```
-# 查看 tap 列表
-brew tap
-# 删除对应的 tap
-brew untap <tap_name>
-```
+     ```
+     # 修改 brew.git 为阿里源
+     $ git -C "$(brew --repo)" remote set-url origin https://mirrors.aliyun.com/homebrew/brew.git
+     
+     # zsh 替换 brew bintray 镜像
+     $ echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles' >> ~/.zshrc
+     $ source ~/.zshrc
+     
+     # 刷新源
+     $ brew update
+     ```
 
-然后进行重新换源：
+4.   Starship, 用于增强命令行的提示, 直接用 brew 安装就好 [Starship](https://starship.rs/zh-CN/guide/#🚀-安装)
 
-```
-# 查看 brew.git 当前源
-$ cd "$(brew --repo)" && git remote -v
-origin    https://github.com/Homebrew/brew.git (fetch)
-origin    https://github.com/Homebrew/brew.git (push)
+     1.   [macos - How to disable the "AppleRawMaxCapacity" warning in mac terminal - Stack Overflow](https://stackoverflow.com/questions/77222467/how-to-disable-the-applerawmaxcapacity-warning-in-mac-terminal)
 
-# 查看 homebrew-core.git 当前源
-# homebrew-core 现在被取消了
-$ cd "$(brew --repo homebrew/core)" && git remote -v
-origin    https://github.com/Homebrew/homebrew-core.git (fetch)
-origin    https://github.com/Homebrew/homebrew-core.git (push)
+5.   edge 浏览器
 
-# 修改 brew.git 为阿里源
-$ git -C "$(brew --repo)" remote set-url origin https://mirrors.aliyun.com/homebrew/brew.git
+6.   Nead Download Manager
 
-# 修改 homebrew-core.git 为阿里源
-$ git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.aliyun.com/homebrew/homebrew-core.git
+     1.   安装插件
+     2.   配置代理
 
-# zsh 替换 brew bintray 镜像
-$ echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles' >> ~/.zshrc
-$ source ~/.zshrc
+7.   Typora
 
-# bash 替换 brew bintray 镜像
-$ echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles' >> ~/.bash_profile
-$ source ~/.bash_profile
+8.   Doppler, 本地音乐播放器, [cracked]
 
-# 刷新源
-$ brew update
-```
+9.   Zotero, 论文阅读
 
+10.   Office, [cracked]
+
+11.   Clean My Max X, [cracked]
+
+12.   滴答清单, [Appstore]
+
+13.   腾讯会议
+
+14.   坚果云
+
+15.   ==NTFS for Mac==, 应该有更好的免费替代品
+
+16.   Logi Options+/Logi Hub
+
+17.   Xmind, [cracked]
+
+18.   CotEditor, 类似于记事本的编辑器
+
+19.   VS Code
+
+20.   Adobe Acrobat, [cracked]
+
+21.   Maccy, 剪贴板管理器
+
+      1.   设置“自动粘贴”
+
+22.   Hidden Bar, [Appstore]
+
+23.   网易邮箱大师
+
+24.   Giphy Capture, 录制 Gif, 应该有更好的选择
+
+25.   qq
+
+      1.   配置文件保存路径, `~/Documents/qq接收文件`
+
+26.   微信
+
+      1.   设置小于一定大小自动保存文件
+
+27.   VNC Viewer, 用于远程控制转发界面
+
+28.   PicGo, 图床组建
+
+29.   Lunar, 调整显示器亮度
+
+30.   ShadowsocksX-NG
+
+31.   Proxifier, [cracked]
