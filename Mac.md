@@ -84,9 +84,51 @@
 
 28.   PicGo, 图床组建
 
-      1.   gitee-uploader 插件
+      1.   安装 npm 和 node.js, `brew install node`
 
-      2.   super-prefix 插件, 文件夹设置 `YYYY-MM-DD/`, 文件名设置 `YYYY-MM-DDThh:mm:ss`
+      2.   安装 picgo-core, `npm install picgo -g`
+
+      3.   安装 gitee-uploader
+
+           ```
+           npm install picgo-plugin-gitee-uploader -g
+           ```
+
+      4.   安装 super-prefix
+
+           ```
+           git clone --depth=1 git@github.com:apollo600/picgo-plugin-super-prefix.git
+           cd picgo-plugin-super-prefix
+           npm install
+           npm run build
+           cp -r ../picgo-plugin-super-prefix ~/.picgo/
+           cd ~/.picgo
+           npm install ./picgo-plugin-super-prefix
+           ```
+
+           或者如果我的 PR 被合并并且这个插件已经更新到了 1.2.3+
+
+           ```
+           npm install picgo-plugin-super-prefix -g
+           ```
+
+      5.   配置图床
+
+           ```
+           picgo config uploader
+           # 路径: 主机名称
+           ```
+
+      6.   配置 super-prefix
+
+           ```
+           picgo config plugin
+           # 选择 super-prefix
+           # dir: YYYY/YYYY-DD-MM
+           # file: YYYY-DD-MMThh:mm:ss
+           picgo use plugins
+           # 选择 super-prefix
+           ```
 
 29.   Lunar, 调整显示器亮度
 
