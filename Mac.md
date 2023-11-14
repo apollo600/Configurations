@@ -7,7 +7,7 @@
      1.   维护一份配置文件 [iterm2.json](./iterm2.json)
      2.   需要配置 Nerd Font [Nerd Fonts - Iconic font aggregator, glyphs/icons collection, & fonts patcher](https://www.nerdfonts.com/font-downloads), 目前使用的是 CodeNewRoman Nerd Font, 也可以使用 FiraCode Nerd Font
 
-     <img src="https://raw.githubusercontent.com/apollo600/images/main/mac-mini/202311140105129.png?token=AQJ63I37BM32TI2AFSHPSRTFKJLZ6" alt="image-20231114010536990" style="zoom: 33%;" />
+     <img src="https://gitee.com/sekiro_meng/images/raw/master/mac-air/202311141550191.png" alt="202311140105129" style="zoom: 33%;" />
 
 3.   Homebrew, mac 上很好用的安装器 [官网](brew.sh)
 
@@ -83,6 +83,10 @@
 27.   VNC Viewer, 用于远程控制转发界面
 
 28.   PicGo, 图床组建
+
+      1.   gitee-uploader 插件
+
+      2.   super-prefix 插件, 文件夹设置 `YYYY-MM-DD/`, 文件名设置 `YYYY-MM-DDThh:mm:ss`
 
 29.   Lunar, 调整显示器亮度
 
