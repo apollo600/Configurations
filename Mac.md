@@ -124,8 +124,8 @@
            ```
            picgo config plugin
            # 选择 super-prefix
-           # dir: YYYY/YYYY-DD-MM
-           # file: YYYY-DD-MMTHH:mm:ss
+           # dir: YYYY/YYYY-MM-DD/
+           # file: YYYY-MM-DDTHH:mm:ss
            picgo use plugins
            # 选择 super-prefix
            ```
