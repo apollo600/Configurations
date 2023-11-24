@@ -110,14 +110,22 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 # call this function to turn on proxy
 proxy() {
-        export http_proxy="http://127.0.0.1:7890"
-        export https_proxy="http://127.0.0.1:7890"
-        echo "Turn on HTTP&HTTPS Proxy [port 7890]"
+        export HTTP_PROXY="http://127.0.0.1:$1"
+        export http_proxy="http://127.0.0.1:$1"
+        export HTTPS_PROXY="http://127.0.0.1:$1"
+        export https_proxy="http://127.0.0.1:$1"
+        export ALL_PROXY="socks5://127.0.0.1:$1"
+        export all_proxy="socks5://127.0.0.1:$1"
+        echo "Turn on HTTP&HTTPS&SOCKS5 Proxy [port $1]"
 }
 
 # call this function to turn off proxy
 noproxy () {
+  unset HTTP_PROXY
   unset http_proxy
+  unset HTTPS_PROXY
   unset https_proxy
-  echo "Turn off HTTP&HTTPS Proxy"
+  unset ALL_PROXY
+  unset all_proxy
+  echo "Turn off HTTP&HTTPS&SOCKS5 Proxy"
 }
