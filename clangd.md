@@ -21,11 +21,12 @@ clangd --version
 
 ```json
 {
-    "editor.inlayHints.enabled": "on",
+    "editor.inlayHints.enabled": "offUnlessPressed",
     "clangd.arguments": [
         "--query-driver=clang",
         "--compile-commands-dir=${workspaceFolder}/",
         "--log=error",
+        "--background-index",
     ],
     "clangd.path": "clangd",
     "clangd.fallbackFlags": [],
@@ -52,9 +53,6 @@ CompileFlags:
     --target=aarch64-linux-gnu,
   ]
 
-Index:
-  Background: Skip
-
 Diagnostics:
   ClangTidy:
     Add: [
@@ -66,3 +64,16 @@ Diagnostics:
 ```
 
 详细配置信息：[Configuration (llvm.org)](https://clangd.llvm.org/config)
+
+### 生成 compile_commands.json
+
+如果项目支持 CMake，可以使用 CMake 直接生成。
+
+如果不支持，可以安装 bear 工具，使用下面的命令生成 compile_commands.json 文件：
+
+```shell
+# 必须从头编译，否则 compile_commands.json 中内容不全
+make clean
+# 生成 compile_commands.json
+bear -- make
+```
