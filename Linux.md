@@ -10,10 +10,32 @@ look at [Git Configurations](Git.md)
 
 #### zsh
 
+安装 [[Oh My Zsh - a delightful & open source framework for Zsh](https://ohmyz.sh/)]
+
 ```shell
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+安装插件
+
+```shell
+cd ~/.oh-my-zsh/plugins
 git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git
 git clone --depth=1 https://github.com/zsh-users/zsh-completions.git
 git clone --depth=1 https://github.com/zsh-users/zsh-autosuggesti
+```
+
+安装 shell 工具
+
+```shell
+yay -S starship tldr fzf
+tldr -u # 更新 tldr 缓存
+```
+
+最后
+
+```shell
+source ~/.zshrc
 ```
 
 #### Edge浏览器

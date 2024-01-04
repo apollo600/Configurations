@@ -129,3 +129,5 @@ noproxy () {
   unset all_proxy
   echo "Turn off HTTP&HTTPS&SOCKS5 Proxy"
 }
+
+eval "$(starship init zsh)"
