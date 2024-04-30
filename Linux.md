@@ -22,7 +22,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 cd ~/.oh-my-zsh/plugins
 git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git
 git clone --depth=1 https://github.com/zsh-users/zsh-completions.git
-git clone --depth=1 https://github.com/zsh-users/zsh-autosuggesti
+git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestion.git
 ```
 
 安装 shell 工具
