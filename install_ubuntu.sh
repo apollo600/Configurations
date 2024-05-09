@@ -33,12 +33,28 @@ install_git_proxy() {
     set -x
 
     sudo apt install corkscrew
+    
     cat <<EOF >> $HOME/.ssh/config
 Host github.com
     ProxyCommand corkscrew 127.0.0.1 7890 %h %p
 EOF
 }
-install_project 1 "Git Proxy (Ensure you have proxy first)" "install_git_proxy"
+install_project 1 "Git Proxy" "install_git_proxy"
+
+# git proxy
+install_git() {
+    set +x
+
+    # alias
+    git config --global alias.st status
+    echo -n "Git User name: "
+    read -r response
+    git config --global user.name $response
+    echo -n "Git User email: "
+    read -r response
+    git config --global user.email $response
+}
+install_project 2 "Git" "install_git"
 
 # zsh
 install_zsh() {
@@ -63,7 +79,7 @@ install_zsh() {
     set +x
     echo "Install finished! Please restart your terminal."
 }
-install_project 2 "ZSH" "install_zsh"
+install_project 3 "ZSH" "install_zsh"
 
 # shell tools
 install_shell_tools() {
@@ -77,5 +93,5 @@ install_shell_tools() {
     set +ex
     echo "Install finished! Please restart your terminal."
 }
-install_project 3 "Sheel Tools" "install_shell_tools"
+install_project 4 "Sheel Tools" "install_shell_tools"
 
