@@ -23,6 +23,17 @@ parsers: # array
           url: http://www.google.com/
           interval: 600
           tolerance: 50
+
+        - name: OpenAI
+          type: select
+          url: http://www.chat.openai.com/
+
+        - name: ICT
+          type: select
+          url: http://10.208.128.169/
+          proxies:
+            - Shadowrocket
+            - DIRECT
             
         - name: 🛑 广告拦截
           type: select
@@ -48,7 +59,11 @@ parsers: # array
           url: http://www.google.com/
           proxies:
             - 🔰 选择节点
-            
+      prepend-proxies:
+        - name: Shadowrocket
+          type: socks5
+          server: 127.0.0.1
+          port: 1086
   # 策略组示例
        # - name: 分组名
          # type: select       # 手动选点   
@@ -64,6 +79,7 @@ parsers: # array
       commands:
         - proxy-groups.🔰 选择节点.proxies=[]proxyNames # 向指定策略组添加订阅中的节点名，可使用正则过滤
         - proxy-groups.🔰 选择节点.proxies.0+DIRECT # 向指定分组第一个位置添加一个 DIRECT 节点名
+        - proxy-groups.OpenAI.proxies=[]proxyNames
         
         # 一些可能用到的正则过滤节点示例，使分组更细致
         # []proxyNames|a                         # 包含a
@@ -71,12 +87,21 @@ parsers: # array
         # []proxyNames|^(?=.*a)(?=.*b).*$        # 包含a和b
         # []proxyNames|^((?!b).)*a((?!b).)*$     # 包含a且不包含b
         # []proxyNames|^((?!b|c).)*a((?!b|c).)*$ # 包含a且不包含b或c
-        
+
   # 添加规则
       prepend-rules: # 规则由上往下遍历，如上面规则已经命中，则不再往下处理
         - RULE-SET,applications,DIRECT
         - DOMAIN,clash.razord.top,DIRECT
         - DOMAIN,yacd.haishan.me,DIRECT
+        - DOMAIN-KEYWORD,openai,OpenAI
+        - DOMAIN-KEYWORD,chatgpt,OpenAI
+        - DOMAIN-KEYWORD,ddys,DIRECT
+        - DOMAIN-KEYWORD,yjys,PROXY
+        - DOMAIN,cn.overleaf.com,DIRECT
+        - DOMAIN-KEYWORD,zoom,PROXY
+        - DOMAIN-KEYWORD,docker,PROXY
+        - IP-CIDR,10.208.0.0/16,ICT
+        - DOMAIN,oa.ict.ac.cn,ICT
         - RULE-SET,private,DIRECT
         - RULE-SET,reject,🛑 广告拦截
         - RULE-SET,icloud,DIRECT #
