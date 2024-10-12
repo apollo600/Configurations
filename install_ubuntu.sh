@@ -1,19 +1,25 @@
 #!/bin/bash
 
+set -e
+
+PROXY_PORT=7891
+APT_PROXY="-o Acquire::http::Proxy=http://127.0.0.1:$PROXY_PORT"
+CURL_PROXY="-x http://127.0.0.1:$PROXY_PORT"
+
 install_project() {
     local step="$1"
     local project_name="$2"
     local install_command="$3"
 
     # 提示用户是否要安装指定的项目
-    echo -n "Step $step: Install $project_name [Y/n] "
+    echo -n "Step $step: Install $project_name [y/N] "
 
     # 读取用户输入
     read -r response
 
     # 检查用户输入是否为空，若为空则默认为 Y
     if [[ -z "$response" ]]; then
-        response="y"
+        response="n"
     fi
 
     # 根据用户输入进行操作
@@ -32,8 +38,10 @@ install_project() {
 install_git_proxy() {
     set -x
 
-    sudo apt install corkscrew
+    sudo apt ${APT_PROXY} update
+    sudo apt ${APT_PROXY} install corkscrew
     
+    mkdir -p $HOME/.ssh
     cat <<EOF >> $HOME/.ssh/config
 Host github.com
     ProxyCommand corkscrew 127.0.0.1 7890 %h %p
@@ -63,16 +71,20 @@ install_zsh() {
     set -x
 
     # 安装 zsh
-    sudo apt install zsh
+    sudo apt ${APT_PROXY} install zsh
 
     # 安装 oh-my-zsh 并设置插件
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    sh -c "$(curl -fsSL $CURL_PROXY https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     cd $HOME/.oh-my-zsh/plugins
     git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git
     git clone --depth=1 https://github.com/zsh-users/zsh-completions.git
     git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git
 
     # 替换 .zshrc 并激活
+    if [ ! -f "$ROOT_DIR/.zshrc" ]; then
+        echo "please prepare $ROOT_DIR/.zshrc to be copied"
+        exit -1
+    fi
     cp $ROOT_DIR/.zshrc $HOME/.zshrc
     chsh -s $(whereis zsh | awk '{print $2}')
 
@@ -85,10 +97,21 @@ install_project 3 "ZSH" "install_zsh"
 install_shell_tools() {
     set -ex
 
-    curl -sS https://starship.rs/install.sh | sh
-    eval "$(starship init zsh)"
-    sudo apt install tldr fzf
-    tldr -u # 更新 tldr 缓存
+    set +x
+    echo "install starship manually"
+    echo "CMD: curl -sS https://starship.rs/install.sh | sh"
+    echo "IF YOU KNOW THIS, PRESS ENTER"
+    read
+    set -x
+    
+    sudo apt ${APT_PROXY} install tldr fzf
+    mkdir -p $HOME/.local/share/tldr
+    set +x
+    echo "update tldr cache manually"
+    echo "CMD: tldr -u"
+    echo "IF YOU KNOW THIS, PRESS ENTER"
+    read
+    set -x
 
     set +ex
     echo "Install finished! Please restart your terminal."
