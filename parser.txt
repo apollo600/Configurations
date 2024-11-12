@@ -28,13 +28,24 @@ parsers: # array
           type: select
           url: http://www.chat.openai.com/
 
+        - name: US
+          type: select
+          url: http://learning.google.com/
+
         - name: ICT
           type: select
           url: http://10.208.128.169/
           proxies:
             - Shadowrocket
             - DIRECT
-            
+
+        - name: NPU
+          type: select
+          url: http://10.68.44.250
+          proxies:
+            - BZPT
+            - DIRECT
+        
         - name: 🛑 广告拦截
           type: select
           proxies:
@@ -64,6 +75,10 @@ parsers: # array
           type: socks5
           server: 127.0.0.1
           port: 1086
+        - name: BZPT
+          type: socks5
+          server: 127.0.0.1
+          port: 10088
   # 策略组示例
        # - name: 分组名
          # type: select       # 手动选点   
@@ -79,7 +94,8 @@ parsers: # array
       commands:
         - proxy-groups.🔰 选择节点.proxies=[]proxyNames # 向指定策略组添加订阅中的节点名，可使用正则过滤
         - proxy-groups.🔰 选择节点.proxies.0+DIRECT # 向指定分组第一个位置添加一个 DIRECT 节点名
-        - proxy-groups.OpenAI.proxies=[]proxyNames
+        - proxy-groups.OpenAI.proxies=[]proxyNames|^((?!香港|港|日本).)*$
+        - proxy-groups.US.proxies=[]proxyNames|美国
         
         # 一些可能用到的正则过滤节点示例，使分组更细致
         # []proxyNames|a                         # 包含a
@@ -90,6 +106,17 @@ parsers: # array
 
   # 添加规则
       prepend-rules: # 规则由上往下遍历，如上面规则已经命中，则不再往下处理
+        - DOMAIN-KEYWORD,openai,OpenAI
+        - DOMAIN-KEYWORD,chatgpt,OpenAI
+        - DOMAIN-KEYWORD,ddys,DIRECT
+        - DOMAIN-KEYWORD,yjys,PROXY
+        - DOMAIN,cn.overleaf.com,DIRECT
+        - DOMAIN-KEYWORD,zoom,PROXY
+        - DOMAIN-KEYWORD,docker,PROXY
+        - IP-CIDR,10.208.0.0/16,ICT
+        - IP-CIDR,10.68.44.0/24,NPU
+        - DOMAIN,oa.ict.ac.cn,ICT
+        - DOMAIN,learning.google.com,US
         - RULE-SET,applications,DIRECT
         - DOMAIN,clash.razord.top,DIRECT
         - DOMAIN,yacd.haishan.me,DIRECT
@@ -109,15 +136,6 @@ parsers: # array
         - RULE-SET,direct,DIRECT
         - RULE-SET,proxy,🔯 代理模式
         - MATCH,🔯 代理模式 # 规则之外的
-        - DOMAIN-KEYWORD,openai,OpenAI
-        - DOMAIN-KEYWORD,chatgpt,OpenAI
-        - DOMAIN-KEYWORD,ddys,DIRECT
-        - DOMAIN-KEYWORD,yjys,PROXY
-        - DOMAIN,cn.overleaf.com,DIRECT
-        - DOMAIN-KEYWORD,zoom,PROXY
-        - DOMAIN-KEYWORD,docker,PROXY
-        - IP-CIDR,10.208.0.0/16,ICT
-        - DOMAIN,oa.ict.ac.cn,ICT
   # 添加规则集
       mix-rule-providers: 
         reject:
